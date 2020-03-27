@@ -1,0 +1,29 @@
+<ul>
+  <li> Nom : {{enseignant.nom}}</li>
+  <li> Adresse : {{enseignant.adresse}}</li>
+  <li> Téléphone : {{enseignant.numero}}</li>
+</ul>
+
+<div>
+  <label >Nom du cours
+    <input type="text" [(ngModel)]="cour.nom">
+  </label>
+
+  <label >Numero Semestre
+    <input type="text" [(ngModel)]="cour.semestre">
+  </label>
+  <button (click)="addCours()" [disabled]="newCour">
+    Ajouter Cours
+  </button>
+</div>
+<div *ngIf="cours.length >0; else noCours">
+  <h3>Liste des Cours : </h3>
+  <ul>
+    <li *ngFor="let c of cours">
+      {{c.nom}} : {{c.semestre}}
+    </li>
+  </ul>
+</div>
+<ng-template #noCours>
+  <p> La liste des cours est vide</p>
+</ng-template>

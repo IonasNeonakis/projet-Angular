@@ -1,0 +1,15 @@
+
+<div id="myDiv" class="row cards">
+<div class="card" *ngFor="let cour of cours">
+  <div class="card-body">
+    <h5 class="card-title">
+      {{cour._nom}}
+    </h5>
+    <p class="card-text">Semestre n°{{ cour.semestre._numero__semestre }} </p>
+  </div>
+  <div class="card-footer bg-transparent">
+    <a class="btn btn-primary" href="#"> Infos </a>
+    <a class="btn btn-danger" href="#"> Supprimer </a>
+  </div>
+</div>
+</div>

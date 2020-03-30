@@ -26,6 +26,5 @@ export class AccueilComponent implements OnInit {
         this.images = data;
       }
     );
-    console.log(this.images);
   }
 }

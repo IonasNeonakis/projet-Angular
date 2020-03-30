@@ -8,6 +8,7 @@ import { EnseignementsComponent } from './enseignements/enseignements.component'
 import {FormsModule} from '@angular/forms';
 import { NavbarComponent } from './navbar/navbar.component';
 import { HttpClientModule } from '@angular/common/http';
+import { CoursComponent } from './cours/cours.component';
 
 
 @NgModule({
@@ -15,7 +16,8 @@ import { HttpClientModule } from '@angular/common/http';
     AppComponent,
     AccueilComponent,
     EnseignementsComponent,
-    NavbarComponent
+    NavbarComponent,
+    CoursComponent
   ],
   imports: [
     BrowserModule,

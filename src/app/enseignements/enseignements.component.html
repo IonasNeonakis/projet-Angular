@@ -1,25 +1,26 @@
-<ul>
-  <li> Nom : {{enseignant.nom}}</li>
-  <li> Adresse : {{enseignant.adresse}}</li>
-  <li> Téléphone : {{enseignant.numero}}</li>
+<div class="container-fluid">
+<ul class="list-group">
+  <li class="list-group-item"> Nom : {{enseignant.nom}}</li>
+  <li class="list-group-item"> Adresse : {{enseignant.adresse}}</li>
+  <li class="list-group-item"> Téléphone : {{enseignant.numero}}</li>
 </ul>
-
-<div>
+</div>
+<div class="input-group">
   <label >Nom du cours
-    <input type="text" [(ngModel)]="cour.nom">
+    <input class="form-control" type="text" [(ngModel)]="cour.nom">
   </label>
 
   <label >Numero Semestre
-    <input type="text" [(ngModel)]="cour.semestre">
+    <input class="form-control" type="text" [(ngModel)]="cour.semestre">
   </label>
-  <button (click)="addCours()" [disabled]="newCour">
+  <button (click)="addCours()" class="btn btn-primary" [disabled]="newCour">
     Ajouter Cours
   </button>
 </div>
 <div *ngIf="cours.length >0; else noCours">
-  <h3>Liste des Cours : </h3>
-  <ul>
-    <li *ngFor="let c of cours">
+  <h3 class="display-4">Liste des Cours : </h3>
+  <ul class="list-group list-group-flush">
+    <li class="list-group-item" *ngFor="let c of cours">
       {{c.nom}} : {{c.semestre}}
     </li>
   </ul>

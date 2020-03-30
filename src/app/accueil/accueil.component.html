@@ -1,1 +1,20 @@
-<p>accueil works!</p>
+<h1 >Bienvenu sur mon premier Site web en angular après le getting started</h1>
+
+<div>
+<label>Mot clé
+  <input [(ngModel)]="motcle" type="text">
+  <button class="btn btn-primary" (click)="chercherImages()"> Chercher</button>
+</label>
+
+</div>
+
+<div class="row" style="justify-content: center">
+<div class="card" *ngFor="let image of images.hits" style="margin: 1em; max-width: 30%;">
+  <img src="{{image.webformatURL}}" alt="image pas trouvée" class="card-img-top">
+  <div class="card-body">
+    <h5 class="card-title"> {{image.tags}} </h5>
+
+  </div>
+
+</div>
+</div>

@@ -8,8 +8,8 @@
     <p class="card-text">Semestre n°{{ cour.semestre._numero__semestre }} </p>
   </div>
   <div class="card-footer bg-transparent">
-    <a class="btn btn-primary" href="#"> Infos </a>
-    <a class="btn btn-danger" href="#"> Supprimer </a>
+    <a class="btn btn-primary" [routerLink]="['/cours/',cour.id]"> Infos </a>
+    <button type="button" class="btn btn-danger" (click)="supprimmer(cour.id)"> Supprimer </button>
   </div>
 </div>
 </div>

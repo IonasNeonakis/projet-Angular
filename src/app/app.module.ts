@@ -9,6 +9,7 @@ import {FormsModule} from '@angular/forms';
 import { NavbarComponent } from './navbar/navbar.component';
 import { HttpClientModule } from '@angular/common/http';
 import { CoursComponent } from './cours/cours.component';
+import { UnCoursComponent } from './un-cours/un-cours.component';
 
 
 @NgModule({
@@ -17,7 +18,8 @@ import { CoursComponent } from './cours/cours.component';
     AccueilComponent,
     EnseignementsComponent,
     NavbarComponent,
-    CoursComponent
+    CoursComponent,
+    UnCoursComponent
   ],
   imports: [
     BrowserModule,

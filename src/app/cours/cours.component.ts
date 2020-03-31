@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
-import {HttpClient} from '@angular/common/http';
+import { Component, OnInit} from '@angular/core';
+import {CoursService} from '../cours.service';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-cours',
@@ -9,16 +10,25 @@ import {HttpClient} from '@angular/common/http';
 export class CoursComponent implements OnInit {
   cours;
 
-  constructor(private http: HttpClient) { }
+  constructor(private coursService: CoursService,
+              private router: Router
+              ) {
+  }
 
   ngOnInit(): void {
     this.chargerCours();
-    console.log(this.cours);
   }
 
   chargerCours(){
-    this.http.get('https://127.0.0.1:8000/API/cours').subscribe(data => {
-      return this.cours = data;
+    this.coursService.getLesCours().subscribe(data  => {
+        this.cours = data;
     });
+  }
+
+  supprimmer(id: number) {
+    this.coursService.deleteUnCours(id).subscribe();
+
+    this.chargerCours();
+    this.router.navigate(['/cours']);
   }
 }

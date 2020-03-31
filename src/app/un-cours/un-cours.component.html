@@ -1,0 +1,9 @@
+<h2>{{ lecours._nom }}</h2>
+<span>
+  {{ lecours._description }}
+</span>
+<p>Semestre {{ lecours.semestre._numero__semestre }}</p>
+
+<a class="btn btn-primary" href="#"> Edit cours</a>
+<button type="button" class="btn btn-danger" (click)="supprimer()" > Supprimer </button>
+<a class="btn btn-info" [routerLink]="['/cours']">Retour aux cours</a>

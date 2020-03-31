@@ -16,19 +16,21 @@ export class CoursComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    console.log('init des cours est appellé');
     this.chargerCours();
   }
 
   chargerCours(){
+    console.log('charger cours');
     this.coursService.getLesCours().subscribe(data  => {
         this.cours = data;
     });
   }
 
   supprimmer(id: number) {
-    this.coursService.deleteUnCours(id).subscribe();
-
-    this.chargerCours();
-    this.router.navigate(['/cours']);
+    this.coursService.deleteUnCours(id).subscribe(() => {
+      this.chargerCours();
+      this.router.navigate(['/cours']);
+    });
   }
 }

@@ -9,7 +9,7 @@ import {CoursService} from '../cours.service';
   styleUrls: ['./un-cours.component.css']
 })
 export class UnCoursComponent implements OnInit {
-  lecours;
+  lecours = {id : 0, _nom : '', _description : '' , semestre : {id : 0, _nom__formation : '', _numero__semestre : 0 , _cours : []}};
 
   constructor(private http: HttpClient,
               private route: ActivatedRoute,
@@ -27,14 +27,14 @@ export class UnCoursComponent implements OnInit {
 
   loadLeCours(id) {
     this.coursService.getUnCours(id).subscribe(data => {
+      // @ts-ignore
       this.lecours = data;
     });
   }
 
-  supprimer() {
-    this.coursService.deleteUnCours(this.lecours.id).subscribe(() => {
-      console.log('deleted');
+   supprimer() {
+    this.coursService.deleteUnCours(this.lecours.id).subscribe( () => {
+      this.router.navigate(['/cours']);
     });
-    this.router.navigate(['/cours']);
   }
 }

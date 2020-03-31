@@ -16,6 +16,7 @@ export class AccueilComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    console.log('init erst appellé');
     this.chercherImages();
   }
 

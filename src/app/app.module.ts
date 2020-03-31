@@ -5,11 +5,12 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { AccueilComponent } from './accueil/accueil.component';
 import { EnseignementsComponent } from './enseignements/enseignements.component';
-import {FormsModule} from '@angular/forms';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import { NavbarComponent } from './navbar/navbar.component';
 import { HttpClientModule } from '@angular/common/http';
 import { CoursComponent } from './cours/cours.component';
 import { UnCoursComponent } from './un-cours/un-cours.component';
+import { FormCoursComponent } from './form-cours/form-cours.component';
 
 
 @NgModule({
@@ -19,14 +20,16 @@ import { UnCoursComponent } from './un-cours/un-cours.component';
     EnseignementsComponent,
     NavbarComponent,
     CoursComponent,
-    UnCoursComponent
+    UnCoursComponent,
+    FormCoursComponent
   ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule,
-    FormsModule,
-    HttpClientModule
-  ],
+    imports: [
+        BrowserModule,
+        AppRoutingModule,
+        FormsModule,
+        HttpClientModule,
+        ReactiveFormsModule
+    ],
   providers: [],
   bootstrap: [AppComponent]
 })

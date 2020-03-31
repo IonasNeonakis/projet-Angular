@@ -1,0 +1,18 @@
+<form [formGroup]="formulaire" (ngSubmit)="onSubmit(formulaire.value)">
+
+  <div>
+    <label for="nom">
+      Nom
+    </label>
+    <input id="nom" type="text" formControlName="nom">
+  </div>
+
+  <div>
+    <label for="Description">
+      Description
+    </label>
+    <input id="Description" type="text" formControlName="description">
+  </div>
+
+  <button class="button" type="submit">Modifier</button>
+</form>

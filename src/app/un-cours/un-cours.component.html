@@ -4,6 +4,6 @@
 </span>
 <p>Semestre {{ lecours.semestre._numero__semestre }}</p>
 
-<a class="btn btn-primary" [routerLink]="['/cours/creer']"> Edit cours</a>
+<a class="btn btn-primary" [routerLink]="['modifier']"> Edit cours</a>
 <a class="btn btn-danger" [routerLink]="['/cours']" (click)="supprimer()" > Supprimer </a>
 <a class="btn btn-info" [routerLink]="['/cours']">Retour aux cours</a>

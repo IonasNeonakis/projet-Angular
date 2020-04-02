@@ -9,7 +9,7 @@ import {CoursService} from '../cours.service';
   styleUrls: ['./un-cours.component.css']
 })
 export class UnCoursComponent implements OnInit {
-  lecours = {id : 0, _nom : '', _description : '' , semestre : {id : 0, _nom__formation : '', _numero__semestre : 0 , _cours : []}};
+  lecours = {id : 0, _nom : '', _description : '' , semestre : {id : 0, _nom__formation : '', _numero__semestre : 1 , _cours : []}};
 
   constructor(private http: HttpClient,
               private route: ActivatedRoute,
@@ -18,14 +18,14 @@ export class UnCoursComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.loadLeCours();
+  }
+
+  loadLeCours() {
     let id = 0  ;
     this.route.paramMap.subscribe(params => {
       id = Number(params.get('id'));
     });
-    this.loadLeCours(id);
-  }
-
-  loadLeCours(id) {
     this.coursService.getUnCours(id).subscribe(data => {
       // @ts-ignore
       this.lecours = data;
@@ -37,4 +37,5 @@ export class UnCoursComponent implements OnInit {
       this.router.navigate(['/cours']);
     });
   }
+
 }

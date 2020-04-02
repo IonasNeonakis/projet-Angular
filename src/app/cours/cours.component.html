@@ -1,5 +1,17 @@
 
 <div id="myDiv" class="row cards">
+  <div class="card pres-card">
+    <div class="card-body">
+      <h5 class="card-title">
+        Créer un cours
+      </h5>
+    </div>
+
+    <div class="card-footer bg-transparent creer_bouton">
+      <a class="btn btn-success"  [routerLink]="['/cours/creer']"> Creer </a>
+    </div>
+  </div>
+
 <div class="card" *ngFor="let cour of cours">
   <div class="card-body">
     <h5 class="card-title">

@@ -2,17 +2,25 @@
 
   <div>
     <label for="nom">
-      Nom
+      Nom :
     </label>
     <input id="nom" type="text" formControlName="nom">
   </div>
 
   <div>
     <label for="Description">
-      Description
+      Description :
     </label>
-    <input id="Description" type="text" formControlName="description">
+    <input  required id="Description" type="text" formControlName="description">
   </div>
 
-  <button class="button" type="submit">Modifier</button>
+  <label>Numero semestre :
+    <select required formControlName="semestre">
+      <option *ngFor="let sem of tousLesSemestres" [ngValue]="sem"> {{sem._numero__semestre}}</option>
+    </select>
+  </label>
+
+  <button *ngIf="cour.estnouveau" class="button" type="submit">Creer</button>
+  <button *ngIf="!cour.estnouveau" class="button" type="submit">Modifier</button>
+
 </form>

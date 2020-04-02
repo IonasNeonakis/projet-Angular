@@ -30,7 +30,7 @@ import { FormCoursComponent } from './form-cours/form-cours.component';
         HttpClientModule,
         ReactiveFormsModule
     ],
-  providers: [],
+  providers: [UnCoursComponent],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

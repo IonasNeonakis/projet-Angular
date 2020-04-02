@@ -16,12 +16,10 @@ export class CoursComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    console.log('init des cours est appellé');
     this.chargerCours();
   }
 
   chargerCours(){
-    console.log('charger cours');
     this.coursService.getLesCours().subscribe(data  => {
         this.cours = data;
     });

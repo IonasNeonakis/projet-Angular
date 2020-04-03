@@ -1,9 +1,16 @@
 <h2>{{ lecours._nom }}</h2>
-<span>
-  {{ lecours._description }}
-</span>
+
+
+
+  <div>
+    {{ lecours._description }}
+  </div>
+
+
 <p>Semestre {{ lecours.semestre._numero__semestre }}</p>
 
+<div>
 <a class="btn btn-primary" [routerLink]="['modifier']"> Edit cours</a>
-<a class="btn btn-danger" [routerLink]="['/cours']" (click)="supprimer()" > Supprimer </a>
+<a class="btn btn-danger btn_milieu" [routerLink]="['/cours']" (click)="supprimer()" > Supprimer </a>
 <a class="btn btn-info" [routerLink]="['/cours']">Retour aux cours</a>
+</div>

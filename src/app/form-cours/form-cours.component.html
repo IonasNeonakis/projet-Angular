@@ -1,26 +1,96 @@
+
 <form [formGroup]="formulaire" (ngSubmit)="onSubmit(formulaire.value)">
-
-  <div>
-    <label for="nom">
-      Nom :
+<fieldset>
+  <legend *ngIf="cour.estnouveau">
+    Creer un cours
+  </legend>
+  <legend *ngIf="!cour.estnouveau">
+  Modifier un cours
+  </legend>
+  <div class="form-group">
+    <label for="nomid">
+      Nom
     </label>
-    <input id="nom" type="text" formControlName="nom">
+    <input id="nomid" class="form-control"
+           [ngClass]="{'is-invalid' : nom.invalid && (nom.dirty || nom.touched),
+                        'is-valid ' : !nom.invalid }" type="text" formControlName="nom">
+
+  <div *ngIf="nom.invalid && (nom.dirty || nom.touched)"
+       class="invalid-feedback">
+
+    <div *ngIf="nom.errors.minlength">
+      La longueur doit être d'au moins 3
+    </div>
+
+    <div *ngIf="nom.errors.required">
+      Ce champ est requis
+    </div>
+
+  </div>
+    <div *ngIf="!(nom.invalid && (nom.dirty || nom.touched))"
+         class="valid-feedback">
+      Bien
+    </div>
   </div>
 
-  <div>
+
+  <div class="form-group">
     <label for="Description">
-      Description :
+      Description
     </label>
-    <input  required id="Description" type="text" formControlName="description">
+    <textarea  class="form-control" id="Description"
+            [ngClass]="{'is-invalid' : description.invalid && (description.dirty || description.touched),
+                        'is-valid ' : !description.invalid }"
+               type="text" formControlName="description"></textarea>
+
+    <div *ngIf="description.invalid && (description.dirty || description.touched)"
+         class="invalid-feedback">
+
+      <div *ngIf="description.errors.minlength">
+        La longueur doit être d'au moins 5
+      </div>
+
+      <div *ngIf="description.errors.required">
+        Ce champ est requis
+      </div>
+
+    </div>
+    <div *ngIf="!(description.invalid && (description.dirty || description.touched))"
+         class="valid-feedback">
+      Bien
+    </div>
   </div>
 
-  <label>Numero semestre :
-    <select required formControlName="semestre">
+
+
+
+  <div class="form-group">
+  <label for="select">
+    Numero semestre
+  </label>
+    <select id="select" class="form-control"
+            [ngClass]="{'is-invalid' : semestre.invalid,
+                        'is-valid ' : !semestre.invalid }"
+            formControlName="semestre">
       <option *ngFor="let sem of tousLesSemestres" [ngValue]="sem"> {{sem._numero__semestre}}</option>
     </select>
-  </label>
 
-  <button *ngIf="cour.estnouveau" class="button" type="submit">Creer</button>
-  <button *ngIf="!cour.estnouveau" class="button" type="submit">Modifier</button>
+    <div *ngIf="semestre.invalid"
+         class="invalid-feedback">
 
+      <div *ngIf="semestre.errors.required">
+        Veuillez choisir un semestre
+      </div>
+
+    </div>
+  </div>
+
+
+  <div>
+  <button *ngIf="cour.estnouveau" class="btn btn-success" [disabled]="description.invalid || nom.invalid || semestre.invalid" type="submit">Creer</button>
+  <button *ngIf="!cour.estnouveau" class="btn btn-success" [disabled]="description.invalid || nom.invalid || semestre.invalid" type="submit">Modifier</button>
+    <a class="btn btn-info btn_milieu" [routerLink]="['/cours']">Retour aux cours</a>
+
+  </div>
+</fieldset>
 </form>

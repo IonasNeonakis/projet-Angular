@@ -25,8 +25,11 @@ export class CoursService {
     return this.http.get('https://127.0.0.1:8000/api/semestre');
   }
 
-  postCours(cours){
-    return this.http.put('https://127.0.0.1:8000/api/cours/creer', cours);
+  posteditCours(cours, id){
+      return this.http.put('https://127.0.0.1:8000/api/cours/' + id + '/edit', cours);
   }
 
+  postnewCours(donneesCours) {
+    return this.http.put('https://127.0.0.1:8000/api/cours/creer', donneesCours);
+  }
 }

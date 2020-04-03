@@ -1,7 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, NgModule, OnInit} from '@angular/core';
 import {CoursService} from '../cours.service';
-import {FormBuilder} from '@angular/forms';
+import {FormBuilder, FormControl, Validators} from '@angular/forms';
 import {ActivatedRoute, Router} from '@angular/router';
+
 
 @Component({
   selector: 'app-form-cours',
@@ -28,10 +29,9 @@ export class FormCoursComponent implements OnInit {
               private route: ActivatedRoute,
               private router: Router) {
     this.formulaire = this.formBuilder.group({
-      nom: '',
-      description: '',
-      semestre: null,
-      estnouveau: true,
+      nom: new FormControl( '', [Validators.required, Validators.minLength(3)]),
+      description: new FormControl('', [Validators.required, Validators.minLength(5)]),
+      semestre: new FormControl(null, [Validators.required]),
       id : 0
     });
     this.loadLeCours();
@@ -55,10 +55,7 @@ export class FormCoursComponent implements OnInit {
         this.formulaire.controls.nom.setValue(this.cour._nom);
         this.formulaire.controls.description.setValue(this.cour._description);
         this.formulaire.controls.semestre.setValue(this.tousLesSemestres[this.getIndexSemestre(this.cour.semestre.id)]);
-        this.formulaire.controls.estnouveau.setValue(false);
         this.formulaire.controls.id.setValue(this.cour.id);
-
-
       });
     }
     });
@@ -69,10 +66,23 @@ export class FormCoursComponent implements OnInit {
   ngOnInit(): void {}
 
   onSubmit(donneesCours) {
-    console.log(donneesCours);
-    this.coursService.postCours(donneesCours).subscribe( () => {
+    if (this.cour.estnouveau){
+    this.coursService.postnewCours(donneesCours).subscribe( () => {
       this.router.navigate(['/cours']);
+    });
+    }else {
+      this.coursService.posteditCours(donneesCours, this.cour.id).subscribe(() => {
+        this.router.navigate(['/cours']);
+      }
+    );
     }
-  );
   }
+
+  get nom() { return this.formulaire.get('nom'); }
+
+  get description() { return this.formulaire.get('description'); }
+
+  get semestre() { return this.formulaire.get('semestre'); }
+
+
 }

@@ -11,7 +11,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { CoursComponent } from './cours/cours.component';
 import { UnCoursComponent } from './un-cours/un-cours.component';
 import { FormCoursComponent } from './form-cours/form-cours.component';
-
+import { NgxMdModule } from 'ngx-md';
 
 @NgModule({
   declarations: [
@@ -23,13 +23,14 @@ import { FormCoursComponent } from './form-cours/form-cours.component';
     UnCoursComponent,
     FormCoursComponent
   ],
-    imports: [
-        BrowserModule,
-        AppRoutingModule,
-        FormsModule,
-        HttpClientModule,
-        ReactiveFormsModule
-    ],
+  imports: [
+    BrowserModule,
+    AppRoutingModule,
+    FormsModule,
+    HttpClientModule,
+    ReactiveFormsModule,
+    NgxMdModule.forRoot()
+  ],
   providers: [UnCoursComponent],
   bootstrap: [AppComponent]
 })
